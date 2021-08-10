@@ -1,12 +1,16 @@
+UPSTREAM = URLEncoder.encode('sandbox/fclausen/jenkins-k8s-hello-world/master', "UTF-8")
+
 properties([
   parameters([
     string(name: 'SOME_PARAM',
       defaultValue: "42",
       description: "Set to 1 to fix everything"
     ),
-  ])
+  ]),
+  triggers(
+    [ upstream( upstreamProjects: "$UPSTREAM", threshold: hudson.model.Result.SUCCESS ) ]
+  ),
 ])
 
-node('master') {
-  sh 'echo "Hello world, lucky number $RANDOM"'
-}
+// URLEncoder.encode(toEncode, "UTF-8") 
+echo "I have run with $env.SOME_PARAM"
