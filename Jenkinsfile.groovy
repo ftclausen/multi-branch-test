@@ -7,9 +7,9 @@ properties([
       description: "Set to 1 to fix everything"
     ),
   ]),
-  triggers(
-    [ upstream( upstreamProjects: "$UPSTREAM", threshold: hudson.model.Result.SUCCESS ) ]
-  ),
+  pipelineTriggers([
+    upstream(UPSTREAM)
+  ])
 ])
 
 // URLEncoder.encode(toEncode, "UTF-8") 
