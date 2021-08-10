@@ -1,4 +1,5 @@
-UPSTREAM = URLEncoder.encode('sandbox/fclausen/jenkins-k8s-hello-world/master', "UTF-8")
+// If escaping:
+// UPSTREAM = String.format( 'sandbox/fclausen/jenkins-k8s-hello-world/%s', URLEncoder.encode('compat/develop', "UTF-8") )
 
 properties([
   parameters([
@@ -8,9 +9,9 @@ properties([
     ),
   ]),
   pipelineTriggers([
-    upstream(UPSTREAM)
+    upstream('sandbox/fclausen/jenkins-k8s-hello-world/master')
   ])
 ])
 
-// URLEncoder.encode(toEncode, "UTF-8") 
+// URLEncoder.encode(toEncode, "UTF-8")
 echo "I have run with $env.SOME_PARAM"
