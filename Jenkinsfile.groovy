@@ -9,7 +9,7 @@ properties([
     ),
   ]),
   pipelineTriggers([
-    upstream('sandbox/fclausen/jenkins-k8s-hello-world/master')
+    upstream( "sandbox/fclausen/jenkins-k8s-hello-world/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8')}" ),
   ])
 ])
 
