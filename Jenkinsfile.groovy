@@ -16,7 +16,7 @@ properties([
 def cause = currentBuild.getBuildCauses('hudson.model.Cause$UpstreamCause')
 if ( cause ) {
   echo "We have a cause!"
-  def remoteBranch = cause.upstreamRun().getEnvironment().GIT_BRANCH
+  def remoteBranch = cause.upstreamRun().getEnvironment()
   echo "Remove branch: $remoteBranch"
 }
 
