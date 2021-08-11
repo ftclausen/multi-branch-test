@@ -13,7 +13,7 @@ properties([
   ])
 ])
 
-def cause = currentBuild.getBuildCauses('hudson.model.Cause$UpstreamCause')[0]
+def cause = currentBuild.getBuildCause(hudson.model.Cause.UpstreamCause)
 if ( cause ) {
   echo "We have a cause!"
   def remoteBranch = cause.getUpstreamRun().getEnvironment()
