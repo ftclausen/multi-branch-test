@@ -16,7 +16,7 @@ properties([
 def cause = currentBuild.rawBuild.getCause(hudson.model.Cause.UpstreamCause)
 if ( cause ) {
   echo "We have a cause!"
-  def remoteBranch = cause.getUpstreamRun().getEnvironment()
+  def remoteBranch = cause.getUpstreamRun().getEnvironment().GIT_BRANCH
   echo "Remote branch: $remoteBranch"
 }
 
