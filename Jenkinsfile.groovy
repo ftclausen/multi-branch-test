@@ -13,5 +13,6 @@ properties([
   ])
 ])
 
+echo "Waits on: sandbox/fclausen/jenkins-k8s-hello-world/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8')}"
 // URLEncoder.encode(toEncode, "UTF-8")
 echo "I have run with $env.SOME_PARAM"
