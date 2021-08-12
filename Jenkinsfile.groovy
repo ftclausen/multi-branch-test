@@ -9,7 +9,7 @@ properties([
     ),
   ]),
   // pipelineTriggers( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
-  pipelineTriggers( upstream( "sandbox/fclausen/jenkins-k8s-hello-world/develop", "sandbox/fclausen/jenkins-k8s-hello-world/preDevelop" ) ),
+  pipelineTriggers( upstream( upstreamProjects: "sandbox/fclausen/jenkins-k8s-hello-world/develop, sandbox/fclausen/jenkins-k8s-hello-world/preDevelop" ) ),
 ])
 
 stage( 'Stuff' ) {
