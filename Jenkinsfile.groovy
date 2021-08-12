@@ -9,7 +9,7 @@ properties([
     ),
   ]),
   pipelineTriggers([
-    upstream( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
+    getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ),
   ])
 ])
 
