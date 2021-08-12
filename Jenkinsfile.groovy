@@ -8,8 +8,9 @@ properties([
       description: "Set to 1 to fix everything"
     ),
   ]),
-  // pipelineTriggers( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
-  pipelineTriggers( [ upstream( "sandbox/fclausen/jenkins-k8s-hello-world/develop, sandbox/fclausen/jenkins-k8s-hello-world/preDevelop" ) ] ),
+  pipelineTriggers( [
+    upstream( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
+  ] ),
 ])
 
 stage( 'Stuff' ) {
@@ -22,12 +23,11 @@ stage( 'Stuff' ) {
 }
 
 def getParentBranches( def jobName ) {
-  def jobs = [ upstream( "$jobName/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8' )}" ) ]
+  def jobs = [ "$jobName/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8' )}" ]
 
   if ( env.BRANCH_NAME == 'develop' ) {
-    jobs += upstream( "$jobName/${URLEncoder.encode( 'preDevelop', 'UTF-8' )}" )
+    jobs += "$jobName/${URLEncoder.encode( 'preDevelop', 'UTF-8' )}"
   }
 
-  echo "DEBUG: Returning: $jobs"
-  return jobs
+  return jobs.join(",")
 }
