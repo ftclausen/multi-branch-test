@@ -8,7 +8,8 @@ properties([
       description: "Set to 1 to fix everything"
     ),
   ]),
-  pipelineTriggers( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
+  // pipelineTriggers( getParentBranches( 'sandbox/fclausen/jenkins-k8s-hello-world' ) ),
+  pipelineTriggers( [ upstream( "sandbox/fclausen/jenkins-k8s-hello-world/develop" ), upstream( "sandbox/fclausen/jenkins-k8s-hello-world/preDevelop" ) ] ),
 ])
 
 stage( 'Stuff' ) {
