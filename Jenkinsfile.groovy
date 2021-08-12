@@ -25,7 +25,7 @@ echo "Waits on: sandbox/fclausen/jenkins-k8s-hello-world/${URLEncoder.encode( en
 echo "I have run with $env.SOME_PARAM"
 
 def getParentBranches( def jobName ) {
-  def jobs = upstream( "$jobName/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8' )}" )
+  def jobs = [ upstream( "$jobName/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8' )}" ) ]
 
   if ( env.BRANCH_NAME == 'develop' ) {
     jobs += upstream( "$jobName/${URLEncoder.encode( 'preDevelop', 'UTF-8' )}" )
