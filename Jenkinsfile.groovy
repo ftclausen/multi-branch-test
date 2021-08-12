@@ -26,7 +26,7 @@ def getParentBranches( def jobName ) {
   def jobs = [ "$jobName/${URLEncoder.encode( env.BRANCH_NAME, 'UTF-8' )}" ]
 
   if ( env.BRANCH_NAME == 'develop' ) {
-    jobs += "$jobName/${URLEncoder.encode( 'preDevelop/*', 'UTF-8' )}"
+    jobs += "$jobName/${URLEncoder.encode( 'preDevelop', 'UTF-8' )}"
   }
 
   return jobs.join(",")
